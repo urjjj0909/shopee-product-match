@@ -12,7 +12,7 @@
 `label_group` - ID code for all postings that map to the same product. Not provided for the test set.
 
 ## 11th place solution
-本篇參考[第11名解題](https://www.kaggle.com/competitions/shopee-product-matching/discussion/238181)：對`title`抽NLP Feature、對`image`抽CV Feature，最後組合二組特徵並分別定義閥值，超過這個閥值則判斷為相同商品。其中，在調整神經網路上使用了許多優化技術，以下分別針對各項做學習紀錄：
+本篇參考[第11名解題](https://www.kaggle.com/competitions/shopee-product-matching/discussion/238181)：對`title`抽NLP feature、對`image`抽CV feature，最後組合二組特徵並分別定義閥值，超過這個閥值則判斷為相同商品。其中，在調整神經網路上使用了許多優化技術，以下分別針對各項做學習紀錄：
 
 * ArcFace
 * SAM（Sharpness-Aware Minimization）
@@ -36,7 +36,7 @@
 <div align=center><img src="https://github.com/urjjj0909/shopee-product-match/assets/100120881/f2f25c6d-32cc-484b-ac9b-f9e8513cdb82" width="800"></div>
 
 ## SAM
-SAM是一個[簡單且有效追求模型泛化（Generalization）能力的技巧](https://medium.com/ai-blog-tw/sharpness-aware-minimization-sam-%E7%B0%A1%E5%96%AE%E6%9C%89%E6%95%88%E5%9C%B0%E8%BF%BD%E6%B1%82%E6%A8%A1%E5%9E%8B%E6%B3%9B%E5%8C%96%E8%83%BD%E5%8A%9B-257613bb365)，在最小化`loss`時也同時最小化`sharpness`，讓模型收斂在較為平坦的而非尖銳（Sharp）的Minima區域，假設我們具有充足的訓練資料，且訓練資料與測試資料分布相當接近但有微小差距，此時如果模型收斂於尖銳的Minima區域，就容易在測試集上產生很大的誤差，可參考[下圖](https://openreview.net/pdf?id=H1oyRlYgg)：
+SAM是一個[簡單且有效追求模型泛化（Generalization）能力的技巧](https://medium.com/ai-blog-tw/sharpness-aware-minimization-sam-%E7%B0%A1%E5%96%AE%E6%9C%89%E6%95%88%E5%9C%B0%E8%BF%BD%E6%B1%82%E6%A8%A1%E5%9E%8B%E6%B3%9B%E5%8C%96%E8%83%BD%E5%8A%9B-257613bb365)，在最小化`loss`時也同時最小化`sharpness`，讓模型收斂在較為平坦的而非尖銳（Sharp）的minima區域，假設我們具有充足的訓練資料，且訓練資料與測試資料分布相當接近但有微小差距，此時如果模型收斂於尖銳的minima區域，就容易在測試集上產生很大的誤差，可參考[下圖](https://openreview.net/pdf?id=H1oyRlYgg)：
 
 <div align=center><img src="https://github.com/urjjj0909/shopee-product-match/assets/100120881/538559ae-384a-4f18-8a56-26a81b4ce179" width="800"></div>
 
@@ -44,4 +44,4 @@ SAM的核心想法是不僅追求損失函數最小化，同時考量損失函�
 
 <div align=center><img src="https://github.com/urjjj0909/shopee-product-match/assets/100120881/1b888bfa-2bbd-43c5-be58-820c81364ae0" width="800"></div>
 
-其中，在每一次的更新參數下須做二次反向傳播（Backpropagation）：第一次是計算參數`w`的Gradient、第二次則是計算參數`w+ε`的Gradient；另外，在使用上可以參考本篇[SAM Optimizer](https://github.com/davda54/sam)，直接在現有的優化器外層包SAM即可。
+其中，在每一次的更新參數下須做二次反向傳播（Backpropagation）：第一次是計算參數`w`的梯度、第二次則是計算參數`w+ε`的梯度；另外，在使用上可以參考本篇[SAM Optimizer](https://github.com/davda54/sam)，直接在現有的優化器外層包SAM即可。
