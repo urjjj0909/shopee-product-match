@@ -141,8 +141,9 @@ LookAhead可以任意選擇搭配的優化器，先快速的探索更新`fast`�
 下圖左是準確率的等高線圖，可以看到當`fast`將探索的權重更新至`slow`權重，除了讓準確率往更高的方向前進外，也同時因為`slow`權重的更新拉動`fast`權重，讓它可以往準確率更高的區域繼續做探索：
 
 <div align=center><img src="https://github.com/urjjj0909/shopee-product-match/assets/100120881/55c285c2-4b0e-4cf7-b746-b7f193652b37" width="700"></div>
+<br/>
 
-參考[深度學習優化器Ranger: a synergistic optimizer using RAdam (Rectified Adam), Gradient Centralization and LookAhead筆記]([https://pedin024.medium.com/radam-oprimizer-rectified-adam-%E8%87%AA%E5%8B%95warmup%E7%89%88%E7%9A%84adam%E5%84%AA%E5%8C%96%E5%99%A8-ac9de9938a7f](https://pedin024.medium.com/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E5%84%AA%E5%8C%96%E5%99%A8ranger-a-synergistic-optimizer-using-radam-rectified-adam-gradient-centralization-and-f022d9dd4217)https://pedin024.medium.com/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E5%84%AA%E5%8C%96%E5%99%A8ranger-a-synergistic-optimizer-using-radam-rectified-adam-gradient-centralization-and-f022d9dd4217)總結`LookAhead`具有以下優點：
+參考[深度學習優化器Ranger: a synergistic optimizer using RAdam (Rectified Adam), Gradient Centralization and LookAhead筆記](https://pedin024.medium.com/radam-oprimizer-rectified-adam-%E8%87%AA%E5%8B%95warmup%E7%89%88%E7%9A%84adam%E5%84%AA%E5%8C%96%E5%99%A8-ac9de9938a7f](https://pedin024.medium.com/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E5%84%AA%E5%8C%96%E5%99%A8ranger-a-synergistic-optimizer-using-radam-rectified-adam-gradient-centralization-and-f022d9dd4217)https://pedin024.medium.com/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E5%84%AA%E5%8C%96%E5%99%A8ranger-a-synergistic-optimizer-using-radam-rectified-adam-gradient-centralization-and-f022d9dd4217)總結`LookAhead`具有以下優點：
 
 1. 增加訓練的穩定性
 2. 減少調整超參數的工作量：就算是用預設設定，也能顯著的改善SGD和Adam的結果
