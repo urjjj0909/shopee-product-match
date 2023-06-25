@@ -147,3 +147,6 @@ LookAhead可以任意選擇搭配的優化器，先快速的探索更新`fast`�
 1. 增加訓練的穩定性
 2. 減少調整超參數的工作量：就算是用預設設定，也能顯著的改善SGD和Adam的結果
 3. 更快的收斂速度、更小的計算開銷
+
+## 參考
+除了以上論文和文章引用外，附上很棒的影片講解：[Optimization for Deep Learning (1/2)](https://www.youtube.com/watch?v=4pUmZ8hXlHM&ab_channel=Hung-yiLee)和[Optimization for Deep Learning (2/2)](https://www.youtube.com/watch?v=e03YKGHXnL8&ab_channel=Hung-yiLee)。
